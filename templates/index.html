@@ -86,17 +86,52 @@
         .service-card h3 { color: #1a365d; margin-bottom: 12px; font-size: 1.3rem; }
         .service-card p { color: #64748b; font-size: 0.95rem; }
 
-        /* Formulario de Presupuesto */
-        .quote-section { background: white; padding: 45px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 4px solid #d97706; }
-        .quote-section h2 { color: #1a365d; font-size: 2rem; margin-bottom: 10px; text-align: center; }
-        .quote-section p.subtitle { text-align: center; color: #64748b; margin-bottom: 30px; }
-        .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; margin-bottom: 8px; font-weight: bold; color: #334155; font-size: 0.95rem; }
-        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 1rem; box-sizing: border-box; }
-        .form-group.full-width { grid-column: 1 / -1; }
-        .btn-submit { background-color: #1a365d; color: white; border: none; padding: 14px; width: 100%; font-size: 1.1rem; font-weight: bold; border-radius: 6px; cursor: pointer; transition: background 0.2s; }
-        .btn-submit:hover { background-color: #0b1b2b; }
+        /* Sección de Contacto Directo (Reemplaza al formulario) */
+        .quote-section { background: white; padding: 45px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 4px solid #d97706; text-align: center; }
+        .quote-section h2 { color: #1a365d; font-size: 2rem; margin-bottom: 10px; }
+        .quote-section p.subtitle { color: #64748b; margin-bottom: 30px; font-size: 1.1rem; }
+        
+        .contact-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 25px; }
+        
+        .btn-direct-wsp {
+            background-color: #25d366;
+            color: white;
+            padding: 16px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .btn-direct-wsp:hover {
+            background-color: #1eb857;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(37, 211, 102, 0.4);
+        }
+
+        .btn-direct-mail {
+            background-color: #1a365d;
+            color: white;
+            padding: 16px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(26, 54, 93, 0.3);
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .btn-direct-mail:hover {
+            background-color: #0b1b2b;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(26, 54, 93, 0.4);
+        }
 
         /* Footer */
         footer { text-align: center; padding: 30px; background-color: #0b1b2b; color: #94a3b8; font-size: 0.9rem; margin-top: 80px; }
@@ -144,78 +179,46 @@
             </div>
         </div>
 
-        <!-- Formulario de Solicitud de Presupuesto -->
+        <!-- Sección de Contacto Directo (Presupuesto Simplificado) -->
         <section class="quote-section" id="contacto">
             <h2>Solicitá tu Presupuesto</h2>
-            <p class="subtitle">Completá los datos y nos pondremos en contacto a la brevedad para asesorarte.</p>
+            <p class="subtitle">Elegí el medio de tu preferencia para comunicarte directamente con nosotros y recibir asesoramiento al instante:</p>
             
-            <form action="/solicitar_presupuesto" method="POST">
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label for="nombre">Apellido y Nombre:</label>
-                        <input type="text" id="nombre" name="nombre" required placeholder="Ej. Juan Pérez">
-                    </div>
+            <div class="contact-buttons">
+                <!-- Botón de WhatsApp Directo -->
+                <a href="https://wa.me/5491135772711?text=Hola,%20quisiera%20solicitar%20un%20presupuesto%20para%20servicios%20de%20Higiene%20y%20Seguridad." 
+                   target="_blank" 
+                   class="btn-direct-wsp">
+                    💬 Contactar por WhatsApp
+                </a>
 
-                    <div class="form-group">
-                        <label for="razon_social">Razón Social (Empresa):</label>
-                        <input type="text" id="razon_social" name="razon_social" required placeholder="Ej. Metalúrgica SRL">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="telefono">Teléfono de Contacto:</label>
-                        <input type="tel" id="telefono" name="telefono" required placeholder="Ej. 11 2345-6789">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Correo Electrónico:</label>
-                        <input type="email" id="email" name="email" required placeholder="contacto@empresa.com">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="direccion">Dirección del Establecimiento:</label>
-                        <input type="text" id="direccion" name="direccion" required placeholder="Calle, Número, Localidad / Provincia">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="servicio">Servicio Requerido:</label>
-                        <select id="servicio" name="servicio" required>
-                            <option value="">Seleccioná un servicio...</option>
-                            <option value="iluminacion">Medición de Iluminación</option>
-                            <option value="ruido">Medición de Ruido</option>
-                            <option value="pat">Puesta a Tierra (PAT)</option>
-                            <option value="capacitacion">Capacitación al Personal</option>
-                            <option value="integral">Asesoramiento Integral / Varios</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group full-width">
-                        <label for="comentarios">Detalles adicionales (Cantidad de personal, rubro o dudas):</label>
-                        <textarea id="comentarios" name="comentarios" rows="4" placeholder="Contanos brevemente qué necesitás evaluar..."></textarea>
-                    </div>
-                </div>
-
-                <button type="submit" class="btn-submit">Enviar Solicitud de Presupuesto</button>
-            </form>
+                <!-- Botón de Correo Directo -->
+                <a href="mailto:rubendarioveronn@gmail.com?subject=Solicitud%20de%20Presupuesto%20-%20MV%20Consultora&body=Hola%20Ruben,%20quisiera%20solicitar%20un%20presupuesto%20para..." 
+                   class="btn-direct-mail">
+                    ✉️ Enviar un Correo
+                </a>
+            </div>
         </section>
 
-        </div>
+    </div>
 
-    <!-- Recuadro de contacto directo debajo del formulario -->
-<div style="max-width: 600px; margin: 30px auto; padding: 20px; background: #f8f9fa; border: 1px solid #e2e8f0; border-radius: 8px; text-align: left; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-    <p style="color: #4a5568; margin: 8px 0; font-size: 1.05rem;">📞 <strong>Tel.:</strong> 011 3577 2711</p>
-    <p style="color: #4a5568; margin: 8px 0; font-size: 1.05rem;">✉️ <strong>Mail:</strong> rubendarioveronn@gmail.com</p>
-</div>
-    
+    <!-- Recuadro informativo con datos de contacto -->
+    <div style="max-width: 600px; margin: 30px auto; padding: 20px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+        <p style="color: #4a5568; margin: 8px 0; font-size: 1.05rem;">📞 <strong>Tel.:</strong> 011 3577 2711</p>
+        <p style="color: #4a5568; margin: 8px 0; font-size: 1.05rem;">✉️ <strong>Mail:</strong> rubendarioveronn@gmail.com</p>
+    </div>
+        
     <footer>
         <p>&copy; 2026 MV Consultora en Higiene y Seguridad Laboral — Todos los derechos reservados.</p>
     </footer>
-<!-- Botón flotante circular de WhatsApp -->
-<a href="https://wa.me/5491135772711?text=Hola,%20necesito%20consultar%20por%20los%20servicios%20de%20MV%20Consultora" 
-   target="_blank" 
-   style="position: fixed; bottom: 20px; right: 20px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 1000; text-decoration: none;"
-   title="Contactanos por WhatsApp">
-   💬
-</a>
+
+    <!-- Botón flotante circular de WhatsApp -->
+    <a href="https://wa.me/5491135772711?text=Hola,%20necesito%20consultar%20por%20los%20servicios%20de%20MV%20Consultora" 
+       target="_blank" 
+       style="position: fixed; bottom: 20px; right: 20px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 1000; text-decoration: none;"
+       title="Contactanos por WhatsApp">
+        💬
+    </a>
     
 </body>
 </html>
