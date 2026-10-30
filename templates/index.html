@@ -1,12 +1,147 @@
-from flask import Flask, render_template
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MV Consultora - Higiene y Seguridad</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f9;
+            color: #333;
+        }
+        header {
+            background-color: #1a365d;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #1a365d;
+            border-bottom: 2px solid #27ae60;
+            padding-bottom: 8px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #444;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #27ae60;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #219653;
+        }
+        /* Estilo para el botón flotante de WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25d366;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .whatsapp-float:hover {
+            background-color: #20ba5a;
+        }
+    </style>
+</head>
+<body>
 
-app = Flask(__name__)
+    <header>
+        <h1>MV Consultora</h1>
+        <p>Higiene y Seguridad en el Trabajo</p>
+    </header>
 
-@app.route('/')
-def home():
-    return render_template('index.html')
+    <div class="container">
+        <h2>Solicita tu Presupuesto</h2>
+        <form action="/solicitar_presupuesto" method="POST">
+            <div class="form-group">
+                <label for="nombre">Nombre y Apellido:</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
 
-if __name__ == '__main__':
-    import os
-    puerto = int(os.environ.get("PORT", 5000))
-    app.run(host='0.0.0.0', port=puerto)
+            <div class="form-group">
+                <label for="razon_social">Razón Social / Empresa:</label>
+                <input type="text" id="razon_social" name="razon_social">
+            </div>
+
+            <div class="form-group">
+                <label for="telefono">Teléfono:</label>
+                <input type="tel" id="telefono" name="telefono" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Correo Electrónico:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="direccion">Dirección del Objetivo:</label>
+                <input type="text" id="direccion" name="direccion">
+            </div>
+
+            <div class="form-group">
+                <label for="servicio">Servicio Requerido:</label>
+                <select id="servicio" name="servicio">
+                    <option value="Mediciones (Ruido e Iluminación)">Mediciones (Ruido e Iluminación)</option>
+                    <option value="Programa de Seguridad">Programa de Seguridad</option>
+                    <option value="Legajo Técnico">Legajo Técnico</option>
+                    <option value="Capacitaciones">Capacitaciones</option>
+                    <option value="Otro">Otro</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="comentarios">Comentarios / Detalles:</label>
+                <textarea id="comentarios" name="comentarios" rows="4"></textarea>
+            </div>
+
+            <button type="submit">Enviar Solicitud</button>
+        </form>
+    </div>
+
+    <!-- Botón flotante de WhatsApp -->
+    <a href="https://wa.me/5491100000000?text=Hola%20Ruben,%20necesito%20consultar%20por%20un%20presupuesto" class="whatsapp-float" target="_blank">
+        💬 WhatsApp
+    </a>
+
+</body>
+</html>
