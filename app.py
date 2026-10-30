@@ -71,6 +71,8 @@ def solicitar_presupuesto():
             <br>
             <a href='/' style="background: #1a365d; color: white; padding: 12px 25px; text-decoration: none; border-radius: 6px; font-weight: bold;">Volver a la página principal</a>
         </div>
+    """
+
 if __name__ == '__main__':
     puerto = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=puerto)
